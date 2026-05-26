@@ -1,0 +1,106 @@
+---
+const letters = [
+  {
+    quote: "The Medina silk mat transformed my quiet early morning prayer. It is not merely an object of utility; it is a canvas of peace.",
+    author: "Ayesha K.",
+    role: "Architectural Designer",
+    location: "London"
+  },
+  {
+    quote: "Dehn Al Oud is rich, incredibly complex, and shifts beautifully throughout the day. It evokes deep heritage yet feels entirely modern.",
+    author: "Tariq M.",
+    role: "Collector & Critic",
+    location: "Dubai"
+  },
+  {
+    quote: "The clean geometric symmetry of the brass incense burner brings a quiet architectural order to our space. A masterpiece of design.",
+    author: "Fatima H.",
+    role: "Fine Art Curator",
+    location: "Paris"
+  }
+];
+---
+
+<section class="py-24 md:py-36 bg-luxury-black relative" id="testimonials">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <!-- Section Header -->
+    <div class="mb-16 md:mb-20 flex flex-col items-center text-center gap-4">
+      <span class="font-sans text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold scroll-reveal-test">
+        Patron Journals
+      </span>
+      <h2 class="font-serif text-4xl md:text-5xl text-white tracking-wide font-normal scroll-reveal-test">
+        Letters of <span class="italic font-light">Appreciation</span>
+      </h2>
+    </div>
+
+    <!-- 3-Column Glassmorphic Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+      {letters.map((letItem, index) => (
+        <div class="glass p-8 md:p-12 relative flex flex-col justify-between group hover:border-gold-500/30 transition-all duration-500 testimonial-card-scroll" id={`testimonial-${index}`}>
+          <!-- Subtle top gold accent corner -->
+          <div class="absolute top-0 left-0 w-8 h-[1px] bg-gold-500/30 group-hover:bg-gold-500 transition-colors duration-500"></div>
+          <div class="absolute top-0 left-0 w-[1px] h-8 bg-gold-500/30 group-hover:bg-gold-500 transition-colors duration-500"></div>
+
+          <!-- Quote Icon -->
+          <span class="font-serif text-6xl text-gold-500/10 mb-6 block select-none">“</span>
+
+          <!-- Quote Text -->
+          <p class="font-sans text-sm text-gray-300 font-light leading-relaxed tracking-wide italic mb-10">
+            {letItem.quote}
+          </p>
+
+          <!-- Citation Details -->
+          <div class="border-t border-gold-500/10 pt-6 mt-auto">
+            <h4 class="font-serif text-base text-white tracking-wide">{letItem.author}</h4>
+            <div class="flex justify-between items-baseline mt-1">
+              <span class="font-sans text-[10px] uppercase tracking-widest text-gray-500 font-medium">
+                {letItem.role}
+              </span>
+              <span class="font-sans text-[10px] uppercase tracking-widest text-gold-400">
+                {letItem.location}
+              </span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener('load', () => {
+    // Header Reveal
+    const headers = document.querySelectorAll('.scroll-reveal-test');
+    headers.forEach(el => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 25,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%'
+        }
+      });
+    });
+
+    // Staggered testimonial cards reveal
+    const cards = document.querySelectorAll('.testimonial-card-scroll');
+    gsap.from(cards, {
+      opacity: 0,
+      y: 40,
+      duration: 1.4,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#testimonials',
+        start: 'top 80%'
+      }
+    });
+  });
+</script>

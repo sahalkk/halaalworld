@@ -1,0 +1,179 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "HalaalWorld - A premium global halal lifestyle brand. Cultivating elegance, beauty, and tradition for the modern Muslim." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		
+		<!-- SEO Meta Tags -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta name="twitter:card" content="summary_large_image" />
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-luxury-black text-gray-200 antialiased selection:bg-gold-500 selection:text-luxury-black">
+		
+		<!-- Luxury Navigation Header -->
+		<header class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-6 border-b border-transparent bg-transparent" id="main-header">
+			<div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+				<!-- Brand Logo -->
+				<a href="/" class="flex items-center gap-2 group z-50" id="nav-logo">
+					<span class="font-serif text-2xl tracking-[0.25em] text-white transition-all duration-300 group-hover:text-gold-500">HALAALWORLD</span>
+				</a>
+
+				<!-- Desktop Menu -->
+				<nav class="hidden md:flex items-center gap-12 font-sans text-xs uppercase tracking-[0.2em] font-medium text-gray-400">
+					<a href="#collections" class="hover:text-gold-400 transition-colors duration-300">Collections</a>
+					<a href="#lifestyle" class="hover:text-gold-400 transition-colors duration-300">Lifestyle</a>
+					<a href="#philosophy" class="hover:text-gold-400 transition-colors duration-300">Philosophy</a>
+					<a href="#testimonials" class="hover:text-gold-400 transition-colors duration-300">Reviews</a>
+				</nav>
+
+				<!-- Right Actions -->
+				<div class="hidden md:flex items-center gap-6">
+					<button class="font-sans text-xs uppercase tracking-[0.2em] font-semibold text-luxury-black bg-gold-500 hover:bg-gold-400 px-6 py-3 rounded-none transition-all duration-300 border border-gold-500 shadow-lg shadow-gold-500/10 hover:shadow-gold-500/20 active:scale-95">
+						Explore
+					</button>
+				</div>
+
+				<!-- Mobile Menu Button -->
+				<button class="md:hidden flex flex-col justify-center items-center w-8 h-8 z-50 group" id="mobile-menu-btn" aria-label="Toggle Menu">
+					<span class="w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 origin-center group-aria-expanded:rotate-45 group-aria-expanded:translate-y-2"></span>
+					<span class="w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 group-aria-expanded:opacity-0"></span>
+					<span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center group-aria-expanded:-rotate-45 group-aria-expanded:-translate-y-2"></span>
+				</button>
+			</div>
+
+			<!-- Mobile Menu Panel -->
+			<div class="fixed inset-0 w-full h-screen bg-luxury-black/98 z-40 flex flex-col justify-center px-12 transition-all duration-500 opacity-0 pointer-events-none translate-y-[-10px]" id="mobile-menu-panel">
+				<nav class="flex flex-col gap-8 font-serif text-3xl tracking-wider text-gray-300">
+					<a href="#collections" class="mobile-nav-link hover:text-gold-400 transition-all duration-300">Collections</a>
+					<a href="#lifestyle" class="mobile-nav-link hover:text-gold-400 transition-all duration-300">Lifestyle</a>
+					<a href="#philosophy" class="mobile-nav-link hover:text-gold-400 transition-all duration-300">Philosophy</a>
+					<a href="#testimonials" class="mobile-nav-link hover:text-gold-400 transition-all duration-300">Reviews</a>
+				</nav>
+				<div class="mt-12 h-[1px] bg-gold-500/10 w-24"></div>
+				<p class="mt-8 font-sans text-xs uppercase tracking-[0.2em] text-gray-500">Live Your Faith. Beautifully.</p>
+			</div>
+		</header>
+
+		<!-- Main Page Slots -->
+		<slot />
+
+		<!-- Premium Footer -->
+		<footer class="bg-luxury-charcoal border-t border-gold-500/10 py-20 px-6 md:px-12 relative overflow-hidden" id="main-footer">
+			<!-- Subtle ambient glow in footer -->
+			<div class="absolute -bottom-48 -right-48 w-96 h-96 bg-gold-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+			
+			<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+				<!-- Footer Brand -->
+				<div class="md:col-span-2 flex flex-col gap-6">
+					<span class="font-serif text-2xl tracking-[0.25em] text-white">HALAALWORLD</span>
+					<p class="text-sm text-gray-400 font-sans leading-relaxed max-w-sm">
+						Crafting premium lifestyle essentials that honor tradition while embracing contemporary luxury design. 
+					</p>
+					<p class="text-xs text-gray-500 uppercase tracking-widest mt-4">
+						© {new Date().getFullYear()} HalaalWorld. All Rights Reserved.
+					</p>
+				</div>
+
+				<!-- Footer Links -->
+				<div class="flex flex-col gap-4">
+					<h4 class="font-serif text-sm tracking-[0.15em] text-gold-400 uppercase">The Brand</h4>
+					<ul class="flex flex-col gap-2 font-sans text-xs uppercase tracking-wider text-gray-400">
+						<li><a href="#collections" class="hover:text-gold-300 transition-colors duration-300">Our Collections</a></li>
+						<li><a href="#lifestyle" class="hover:text-gold-300 transition-colors duration-300">Visual Journal</a></li>
+						<li><a href="#philosophy" class="hover:text-gold-300 transition-colors duration-300">Our Story</a></li>
+						<li><a href="#" class="hover:text-gold-300 transition-colors duration-300">Inquire</a></li>
+					</ul>
+				</div>
+
+				<!-- Footer Newsletter -->
+				<div class="flex flex-col gap-4">
+					<h4 class="font-serif text-sm tracking-[0.15em] text-gold-400 uppercase">Newsletter</h4>
+					<p class="text-xs text-gray-400 leading-relaxed font-sans">
+						Subscribe to receive invitations to private gallery previews and exclusive collections.
+					</p>
+					<form class="flex border-b border-gold-500/20 py-2 mt-2 group focus-within:border-gold-500 transition-colors duration-300">
+						<input 
+							type="email" 
+							placeholder="Enter your email" 
+							class="bg-transparent border-none text-xs text-white placeholder-gray-500 focus:outline-none w-full font-sans tracking-wide"
+							aria-label="Email Address"
+							required
+						/>
+						<button type="submit" class="text-gold-400 hover:text-gold-300 font-sans text-xs uppercase tracking-widest font-semibold ml-2 transition-colors duration-300">
+							Join
+						</button>
+					</form>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Navigation Header JavaScript -->
+		<script>
+			const header = document.getElementById('main-header');
+			const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+			const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+			const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+			// Scroll Listener for Sticky Navigation Styling
+			window.addEventListener('scroll', () => {
+				if (window.scrollY > 50) {
+					header?.classList.remove('bg-transparent', 'py-6', 'border-transparent');
+					header?.classList.add('glass', 'py-4', 'border-b', 'border-gold-500/10');
+				} else {
+					header?.classList.remove('glass', 'py-4', 'border-b', 'border-gold-500/10');
+					header?.classList.add('bg-transparent', 'py-6', 'border-transparent');
+				}
+			});
+
+			// Mobile Menu Toggle
+			if (mobileMenuBtn && mobileMenuPanel) {
+				mobileMenuBtn.addEventListener('click', () => {
+					const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+					mobileMenuBtn.setAttribute('aria-expanded', String(!isExpanded));
+					
+					if (!isExpanded) {
+						mobileMenuPanel.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-[-10px]');
+						mobileMenuPanel.classList.add('opacity-100', 'translate-y-0');
+						document.body.style.overflow = 'hidden'; // Lock scrolling
+					} else {
+						mobileMenuPanel.classList.remove('opacity-100', 'translate-y-0');
+						mobileMenuPanel.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[-10px]');
+						document.body.style.overflow = ''; // Unlock scrolling
+					}
+				});
+
+				// Close menu on link click
+				mobileNavLinks.forEach(link => {
+					link.addEventListener('click', () => {
+						mobileMenuBtn.setAttribute('aria-expanded', 'false');
+						mobileMenuPanel.classList.remove('opacity-100', 'translate-y-0');
+						mobileMenuPanel.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[-10px]');
+						document.body.style.overflow = '';
+					});
+				});
+			}
+		</script>
+	</body>
+</html>

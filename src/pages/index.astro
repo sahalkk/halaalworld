@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Lifestyle from '../components/Lifestyle.astro';
+import CategoryShowcase from '../components/CategoryShowcase.astro';
+import FeaturedProducts from '../components/FeaturedProducts.astro';
+import Philosophy from '../components/Philosophy.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+---
+
+<Layout title="HalaalWorld | Live Your Faith. Beautifully.">
+	<main>
+		<!-- Fullscreen Hero Entrance -->
+		<Hero />
+
+		<!-- Narrative-driven Lifestyle Storytelling -->
+		<Lifestyle />
+
+		<!-- Asymmetrical Category Portals -->
+		<CategoryShowcase />
+
+		<!-- Core Brand Philosophy & Pillars -->
+		<Philosophy />
+
+		<!-- Curated Signature Products Showcase -->
+		<FeaturedProducts />
+
+		<!-- Patron Journal Letters -->
+		<Testimonials />
+
+		<!-- Inner Circle Membership Request -->
+		<FinalCTA />
+	</main>
+</Layout>
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Perform structural check / refresh on scroll trigger layouts
+	window.addEventListener('load', () => {
+		ScrollTrigger.refresh();
+	});
+</script>

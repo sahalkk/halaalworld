@@ -1,0 +1,123 @@
+---
+---
+
+<section class="py-24 md:py-36 bg-luxury-black relative overflow-hidden" id="lifestyle">
+  <!-- Subtle ambient decorative line -->
+  <div class="absolute left-12 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-gold-500/10 to-transparent hidden lg:block"></div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <!-- Asymmetrical Story Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+      
+      <!-- Text Storytelling Content (Col-span 5) -->
+      <div class="lg:col-span-5 flex flex-col gap-6 md:gap-8 order-2 lg:order-1 relative z-10">
+        <span class="font-sans text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold scroll-fade-in">
+          The Art of Living
+        </span>
+        
+        <h2 class="font-serif text-4xl md:text-5xl text-white leading-tight font-normal tracking-wide scroll-slide-up">
+          Refinement in detail. <br />
+          <span class="italic text-gold-300">Devotion</span> in every breath.
+        </h2>
+
+        <p class="font-sans text-sm md:text-base text-gray-400 font-light leading-relaxed tracking-wide scroll-fade-in">
+          HalaalWorld is a visual and sensory tribute to the beauty of faithful living. We curate and craft lifestyle essentials that respect sacred rituals while embodying modern luxury.
+        </p>
+
+        <p class="font-sans text-sm md:text-base text-gray-400 font-light leading-relaxed tracking-wide scroll-fade-in">
+          Every fabric we weave, every fragrance we distill, and every shape we design is a silent prayer of gratitude, designed to elevate your daily routine into a ceremony of grace.
+        </p>
+
+        <div class="pt-4 scroll-fade-in">
+          <a href="#philosophy" class="group inline-flex items-center gap-4 text-xs font-sans font-semibold uppercase tracking-[0.25em] text-white hover:text-gold-400 transition-colors duration-300">
+            <span>Discover Our Origin</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300 text-gold-500">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Image Column (Col-span 7) -->
+      <div class="lg:col-span-7 order-1 lg:order-2 relative group scroll-image-container">
+        <!-- Floating Backing Card representing luxury structure -->
+        <div class="absolute -inset-4 border border-gold-500/10 scale-95 group-hover:scale-100 transition-all duration-700 pointer-events-none z-0"></div>
+        <div class="absolute -right-4 -bottom-4 w-48 h-48 border-r border-b border-gold-500/20 pointer-events-none z-0"></div>
+
+        <!-- Premium image card with inner border frame -->
+        <div class="relative overflow-hidden aspect-[4/5] md:aspect-[16/10] lg:aspect-[4/5] bg-luxury-charcoal z-10 shadow-2xl shadow-black/80">
+          <img 
+            src="/images/modest_wear.png" 
+            alt="Elegantly draped modest wear fabric in a minimalist architectural space" 
+            class="w-full h-full object-cover scale-100 transition-transform duration-[1.5s] ease-out group-hover:scale-105 filter brightness-95 saturate-[0.9]"
+            id="lifestyle-showcase-img"
+          />
+          <!-- Thin gold inner-border on image -->
+          <div class="absolute inset-4 border border-white/10 group-hover:border-gold-500/30 transition-colors duration-500 pointer-events-none"></div>
+          
+          <!-- Bottom glass vignette tag -->
+          <div class="absolute bottom-6 left-6 right-6 glass p-6 border-l-2 border-l-gold-500 flex justify-between items-center transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
+            <div>
+              <span class="font-sans text-[10px] uppercase tracking-widest text-gold-400 block mb-1">Featured Silhouette</span>
+              <span class="font-serif text-sm text-white tracking-wide">The Emerald Abaya</span>
+            </div>
+            <span class="font-serif text-xs text-gold-300 italic">Silk Collection</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  // We can import ScrollTrigger from GSAP
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener('load', () => {
+    // Parallax on lifestyle image
+    gsap.to('#lifestyle-showcase-img', {
+      yPercent: 8,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.scroll-image-container',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    // Content animations
+    const storyElements = document.querySelectorAll('#lifestyle .scroll-fade-in');
+    storyElements.forEach((el) => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 30,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+
+    const titleElement = document.querySelector('#lifestyle .scroll-slide-up');
+    if (titleElement) {
+      gsap.from(titleElement, {
+        opacity: 0,
+        y: 40,
+        duration: 1.4,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: titleElement,
+          start: 'top 85%'
+        }
+      });
+    }
+  });
+</script>

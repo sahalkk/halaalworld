@@ -1,0 +1,101 @@
+---
+import InteractivePattern from './InteractivePattern.astro';
+---
+
+<section class="py-28 md:py-40 bg-luxury-charcoal relative overflow-hidden border-y border-gold-500/10" id="philosophy">
+  <!-- Subtle background glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold-500/5 rounded-full blur-[150px] pointer-events-none"></div>
+
+  <!-- Interactive pattern overlay -->
+  <InteractivePattern opacity="opacity-[0.08]" class="z-10" />
+
+  <div class="max-w-5xl mx-auto px-6 md:px-12 text-center relative z-20 flex flex-col items-center">
+    
+    <!-- Centered Islamic Geometric Icon -->
+    <div class="w-12 h-12 mb-8 text-gold-400 flex items-center justify-center scroll-reveal-phi">
+      <svg class="w-full h-full" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="25" y="25" width="30" height="30" transform="rotate(0, 40, 40)"></rect>
+        <rect x="25" y="25" width="30" height="30" transform="rotate(45, 40, 40)"></rect>
+        <circle cx="40" cy="40" r="5"></circle>
+      </svg>
+    </div>
+
+    <!-- Editorial Statement -->
+    <blockquote class="font-serif text-3xl md:text-5xl lg:text-6xl text-white tracking-wide leading-snug max-w-4xl mb-12 md:mb-16 font-light scroll-reveal-phi">
+      "Designed for the <span class="text-gold-300 italic font-normal">modern Muslim</span>.<br class="hidden md:inline" /> 
+      Rooted in <span class="text-gold-500 font-medium">tradition</span>."
+    </blockquote>
+
+    <!-- Separator Line -->
+    <div class="w-16 h-[1px] bg-gold-500/30 mb-16 scroll-reveal-phi"></div>
+
+    <!-- Three Brand Pillars Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 w-full text-left">
+      <!-- Pillar 1: Ihsan -->
+      <div class="flex flex-col gap-4 border-t border-gold-500/15 pt-6 scroll-reveal-phi-pillar">
+        <span class="font-sans text-[10px] uppercase tracking-[0.3em] text-gold-400 font-bold">Pillar I</span>
+        <h3 class="font-serif text-2xl text-white tracking-wide">Al-Ihsan <span class="text-xs text-gray-500 font-sans italic block md:inline md:ml-1">(Excellence)</span></h3>
+        <p class="font-sans text-xs text-gray-400 font-light leading-relaxed tracking-wide">
+          An unyielding pursuit of quality. Every thread, blend, and detail is sculpted to the absolute peak of refinement.
+        </p>
+      </div>
+
+      <!-- Pillar 2: Mizan -->
+      <div class="flex flex-col gap-4 border-t border-gold-500/15 pt-6 scroll-reveal-phi-pillar">
+        <span class="font-sans text-[10px] uppercase tracking-[0.3em] text-gold-400 font-bold">Pillar II</span>
+        <h3 class="font-serif text-2xl text-white tracking-wide">Al-Mizan <span class="text-xs text-gray-500 font-sans italic block md:inline md:ml-1">(Harmony)</span></h3>
+        <p class="font-sans text-xs text-gray-400 font-light leading-relaxed tracking-wide">
+          Cultivating balance. Elevating daily living by merging modern minimalist architectural styles with spiritual centering.
+        </p>
+      </div>
+
+      <!-- Pillar 3: Jamal -->
+      <div class="flex flex-col gap-4 border-t border-gold-500/15 pt-6 scroll-reveal-phi-pillar">
+        <span class="font-sans text-[10px] uppercase tracking-[0.3em] text-gold-400 font-bold">Pillar III</span>
+        <h3 class="font-serif text-2xl text-white tracking-wide">Al-Jamal <span class="text-xs text-gray-500 font-sans italic block md:inline md:ml-1">(Beauty)</span></h3>
+        <p class="font-sans text-xs text-gray-400 font-light leading-relaxed tracking-wide">
+          Honoring the beautiful. Drawing inspiration from classical Islamic geometric patterns, literature, and organic forms.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener('load', () => {
+    // Reveal central statement components
+    const reveals = document.querySelectorAll('.scroll-reveal-phi');
+    reveals.forEach(el => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 30,
+        duration: 1.4,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%'
+        }
+      });
+    });
+
+    // Reveal pillars with delay stagger
+    const pillars = document.querySelectorAll('.scroll-reveal-phi-pillar');
+    gsap.from(pillars, {
+      opacity: 0,
+      y: 40,
+      duration: 1.4,
+      stagger: 0.18,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#philosophy',
+        start: 'top 65%'
+      }
+    });
+  });
+</script>
