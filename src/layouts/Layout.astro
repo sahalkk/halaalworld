@@ -6,7 +6,7 @@ interface Props {
 	description?: string;
 }
 
-const { title, description = "HalaalWorld - A premium global halal lifestyle brand. Cultivating elegance, beauty, and tradition for the modern Muslim." } = Astro.props;
+const { title, description = "HALAAL.WORLD - A premium global halal lifestyle brand. Cultivating elegance, beauty, and tradition for the modern Muslim." } = Astro.props;
 ---
 
 <!doctype html>
@@ -36,8 +36,12 @@ const { title, description = "HalaalWorld - A premium global halal lifestyle bra
 		<header class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-6 border-b border-transparent bg-transparent" id="main-header">
 			<div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
 				<!-- Brand Logo -->
-				<a href="/" class="flex items-center gap-2 group z-50" id="nav-logo">
-					<span class="font-serif text-2xl tracking-[0.25em] text-white transition-all duration-300 group-hover:text-gold-500">HALAALWORLD</span>
+				<a href="/" class="flex items-center gap-3 group z-50 animate-fade-in" id="nav-logo">
+					<!-- Clean Gold logo icon (Option C) -->
+					<div class="h-12 md:h-16 w-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+						<img src="/images/logo_option_c_clean.png" alt="HALAAL.WORLD emblem" class="w-full h-full object-contain" />
+					</div>
+					<span class="font-serif text-2xl tracking-[0.25em] text-white transition-all duration-300 group-hover:text-gold-500">HALAAL.WORLD</span>
 				</a>
 
 				<!-- Desktop Menu -->
@@ -84,15 +88,20 @@ const { title, description = "HalaalWorld - A premium global halal lifestyle bra
 			<!-- Subtle ambient glow in footer -->
 			<div class="absolute -bottom-48 -right-48 w-96 h-96 bg-gold-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 			
-			<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+			<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
 				<!-- Footer Brand -->
 				<div class="md:col-span-2 flex flex-col gap-6">
-					<span class="font-serif text-2xl tracking-[0.25em] text-white">HALAALWORLD</span>
+					<div class="flex items-center gap-3">
+						<div class="w-16 h-12 md:h-16 flex items-center justify-center">
+							<img src="/images/logo_option_c_clean.png" alt="HALAAL.WORLD emblem" class="w-full h-full object-contain" />
+						</div>
+						<span class="font-serif text-2xl tracking-[0.25em] text-white">HALAAL.WORLD</span>
+					</div>
 					<p class="text-sm text-gray-400 font-sans leading-relaxed max-w-sm">
 						Crafting premium lifestyle essentials that honor tradition while embracing contemporary luxury design. 
 					</p>
 					<p class="text-xs text-gray-500 uppercase tracking-widest mt-4">
-						© {new Date().getFullYear()} HalaalWorld. All Rights Reserved.
+						© {new Date().getFullYear()} HALAAL.WORLD. All Rights Reserved.
 					</p>
 				</div>
 
@@ -127,6 +136,8 @@ const { title, description = "HalaalWorld - A premium global halal lifestyle bra
 					</form>
 				</div>
 			</div>
+
+
 		</footer>
 
 		<!-- Navigation Header JavaScript -->

@@ -63,27 +63,3 @@ import InteractivePattern from './InteractivePattern.astro';
     </div>
   </div>
 </section>
-
-<script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  window.addEventListener('load', () => {
-    // Reveal CTA elements
-    const elements = document.querySelectorAll('.scroll-reveal-cta');
-    elements.forEach(el => {
-      gsap.from(el, {
-        opacity: 0,
-        y: 25,
-        duration: 1.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%'
-        }
-      });
-    });
-  });
-</script>

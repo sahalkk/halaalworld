@@ -36,7 +36,7 @@ const letters = [
     <!-- 3-Column Glassmorphic Layout -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
       {letters.map((letItem, index) => (
-        <div class="glass p-8 md:p-12 relative flex flex-col justify-between group hover:border-gold-500/30 transition-all duration-500 testimonial-card-scroll" id={`testimonial-${index}`}>
+        <div class="glass p-8 md:p-12 relative flex flex-col justify-between group hover:border-gold-500/40 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(198,168,90,0.05)] transition-[transform,border-color,box-shadow] duration-500 testimonial-card-scroll" id={`testimonial-${index}`}>
           <!-- Subtle top gold accent corner -->
           <div class="absolute top-0 left-0 w-8 h-[1px] bg-gold-500/30 group-hover:bg-gold-500 transition-colors duration-500"></div>
           <div class="absolute top-0 left-0 w-[1px] h-8 bg-gold-500/30 group-hover:bg-gold-500 transition-colors duration-500"></div>
@@ -66,41 +66,3 @@ const letters = [
     </div>
   </div>
 </section>
-
-<script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  window.addEventListener('load', () => {
-    // Header Reveal
-    const headers = document.querySelectorAll('.scroll-reveal-test');
-    headers.forEach(el => {
-      gsap.from(el, {
-        opacity: 0,
-        y: 25,
-        duration: 1.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%'
-        }
-      });
-    });
-
-    // Staggered testimonial cards reveal
-    const cards = document.querySelectorAll('.testimonial-card-scroll');
-    gsap.from(cards, {
-      opacity: 0,
-      y: 40,
-      duration: 1.4,
-      stagger: 0.15,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '#testimonials',
-        start: 'top 80%'
-      }
-    });
-  });
-</script>
