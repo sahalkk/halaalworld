@@ -30,6 +30,10 @@
   --hero-img-opacity: 0.6;
   --card-overlay: linear-gradient(to top, rgba(5, 8, 6, 0.9) 0%, rgba(5, 8, 6, 0.3) 50%, transparent 100%);
   --product-overlay: linear-gradient(to top, rgba(5, 8, 6, 0.6) 0%, transparent 100%);
+  
+  --pattern-stroke: transparent; /* Completely hide static pattern by default so it's only visible on hover */
+  --pattern-glow: rgba(198, 168, 90, 0.7); /* Rich gold spotlight on hover */
+  --dot-grid-color: rgba(198, 168, 90, 0.04);
 }
 
 html.theme-light,
@@ -55,6 +59,10 @@ html.theme-light,
   --hero-img-opacity: 0.85; /* Keep image rich and dark instead of washed out */
   --card-overlay: linear-gradient(to top, rgba(232, 224, 208, 0.45) 0%, rgba(232, 224, 208, 0.1) 40%, transparent 100%); /* Softer vignette overlay */
   --product-overlay: linear-gradient(to top, rgba(232, 224, 208, 0.3) 0%, transparent 100%);
+
+  --pattern-stroke: transparent; /* Completely hide static pattern by default so it's only visible on hover */
+  --pattern-glow: rgba(198, 168, 90, 0.95); /* High-contrast signature gold spotlight on hover */
+  --dot-grid-color: rgba(15, 20, 17, 0.06); /* Soft, clean background dot grid */
 }
 
 /* Explicit fallback overrides to guarantee background and text color rendering */
