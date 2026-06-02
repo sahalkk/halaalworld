@@ -1,0 +1,297 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Lifestyle from '../components/Lifestyle.astro';
+import CategoryShowcase from '../components/CategoryShowcase.astro';
+import FeaturedProducts from '../components/FeaturedProducts.astro';
+import Philosophy from '../components/Philosophy.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+---
+
+<Layout title="HALAAL.WORLD | Live Your Faith. Beautifully." theme="light">
+	<main>
+		<!-- Fullscreen Hero Entrance -->
+		<Hero />
+
+		<!-- Narrative-driven Lifestyle Storytelling -->
+		<Lifestyle />
+
+		<!-- Asymmetrical Category Portals -->
+		<CategoryShowcase />
+
+		<!-- Core Brand Philosophy & Pillars -->
+		<Philosophy />
+
+		<!-- Curated Signature Products Showcase -->
+		<FeaturedProducts />
+
+		<!-- Patron Journal Letters -->
+		<Testimonials />
+
+		<!-- Inner Circle Membership Request -->
+		<FinalCTA />
+	</main>
+</Layout>
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Run animations on complete window load to ensure accurate image heights for ScrollTrigger
+	window.addEventListener('load', () => {
+		// 1. HERO ANIMATIONS
+		const heroTl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+		// Background Image slow zoom-in on load
+		gsap.to('#hero-bg-img', {
+			scale: 1,
+			duration: 3,
+			ease: 'power2.out'
+		});
+
+		// Kicker fade in
+		heroTl.to('#hero-kicker', {
+			opacity: 1,
+			y: 0,
+			duration: 1.2
+		}, '+=0.2');
+
+		// Title slide up characters
+		heroTl.to('#hero-heading span span', {
+			y: 0,
+			duration: 1.4,
+			stagger: 0.15
+		}, '-=1.0');
+
+		// Subtext fade in
+		heroTl.to('#hero-subtext', {
+			opacity: 1,
+			y: 0,
+			duration: 1.2
+		}, '-=0.8');
+
+		// CTAs fade in
+		heroTl.to('#hero-ctas', {
+			opacity: 1,
+			y: 0,
+			duration: 1.2
+		}, '-=1.0');
+
+		// Scroll Down Indicator fade in
+		heroTl.to('#hero-scroll-indicator', {
+			opacity: 1,
+			y: 0,
+			duration: 1.2
+		}, '-=0.8');
+
+		// Continuous animating dot in scroll indicator
+		gsap.to('#scroll-indicator-dot', {
+			y: 48,
+			duration: 2,
+			repeat: -1,
+			ease: 'power2.inOut'
+		});
+
+		// Parallax background image scroll effect
+		window.addEventListener('scroll', () => {
+			const scrolled = window.scrollY;
+			const bgImg = document.getElementById('hero-bg-img');
+			if (bgImg) {
+				bgImg.style.transform = `translateY(${scrolled * 0.4}px)`;
+			}
+		});
+
+		// 2. LIFESTYLE ANIMATIONS
+		// Parallax on lifestyle image
+		gsap.to('#lifestyle-showcase-img', {
+			yPercent: 8,
+			ease: 'none',
+			scrollTrigger: {
+				trigger: '.scroll-image-container',
+				start: 'top bottom',
+				end: 'bottom top',
+				scrub: true
+			}
+		});
+
+		// Content animations
+		const storyElements = document.querySelectorAll('#lifestyle .scroll-fade-in');
+		storyElements.forEach((el) => {
+			gsap.from(el, {
+				opacity: 0,
+				y: 30,
+				duration: 1.2,
+				ease: 'power3.out',
+				scrollTrigger: {
+					trigger: el,
+					start: 'top 85%',
+					toggleActions: 'play none none none'
+				}
+			});
+		});
+
+		const titleElement = document.querySelector('#lifestyle .scroll-slide-up');
+		if (titleElement) {
+			gsap.from(titleElement, {
+				opacity: 0,
+				y: 40,
+				duration: 1.4,
+				ease: 'power3.out',
+				scrollTrigger: {
+					trigger: titleElement,
+					start: 'top 85%'
+				}
+			});
+		}
+
+		// 3. CATEGORY SHOWCASE ANIMATIONS
+		const catHeaders = document.querySelectorAll('.scroll-reveal-cat');
+		catHeaders.forEach(el => {
+			gsap.from(el, {
+				opacity: 0,
+				y: 25,
+				duration: 1.2,
+				ease: 'power3.out',
+				scrollTrigger: {
+					trigger: el,
+					start: 'top 85%'
+				}
+			});
+		});
+
+		const catCards = document.querySelectorAll('.category-card-scroll');
+		catCards.forEach((card) => {
+			gsap.from(card, {
+				opacity: 0,
+				y: 60,
+				duration: 1.4,
+				ease: 'power3.out',
+				scrollTrigger: {
+					trigger: card,
+					start: 'top 90%'
+				}
+			});
+
+			const img = card.querySelector('.cat-card-image');
+			if (img) {
+				gsap.to(img, {
+					yPercent: 4,
+					ease: 'none',
+					scrollTrigger: {
+						trigger: card,
+						start: 'top bottom',
+						end: 'bottom top',
+						scrub: true
+					}
+				});
+			}
+		});
+
+		// 4. PHILOSOPHY ANIMATIONS
+		const phiReveals = document.querySelectorAll('.scroll-reveal-phi');
+		phiReveals.forEach(el => {
+			gsap.from(el, {
+				opacity: 0,
+				y: 30,
+				duration: 1.4,
+				ease: 'power3.out',
+				scrollTrigger: {
+					trigger: el,
+					start: 'top 85%'
+				}
+			});
+		});
+
+		const phiPillars = document.querySelectorAll('.scroll-reveal-phi-pillar');
+		gsap.from(phiPillars, {
+			opacity: 0,
+			y: 40,
+			duration: 1.4,
+			stagger: 0.18,
+			ease: 'power3.out',
+			scrollTrigger: {
+				trigger: '#philosophy',
+				start: 'top 65%'
+			}
+		});
+
+		// 5. FEATURED PRODUCTS ANIMATIONS
+		const prodHeaders = document.querySelectorAll('.scroll-reveal-prod');
+		prodHeaders.forEach(el => {
+			gsap.from(el, {
+				opacity: 0,
+				y: 25,
+				duration: 1.2,
+				ease: 'power3.out',
+				scrollTrigger: {
+					trigger: el,
+					start: 'top 85%'
+				}
+			});
+		});
+
+		const prodCards = document.querySelectorAll('.product-card-scroll');
+		gsap.from(prodCards, {
+			opacity: 0,
+			y: 40,
+			duration: 1.4,
+			stagger: 0.15,
+			ease: 'power3.out',
+			scrollTrigger: {
+				trigger: '#featured-products',
+				start: 'top 80%'
+			}
+		});
+
+		// 6. TESTIMONIALS ANIMATIONS (FIXED VISIBILITY)
+		const testHeaders = document.querySelectorAll('.scroll-reveal-test');
+		testHeaders.forEach(el => {
+			gsap.from(el, {
+				opacity: 0,
+				y: 25,
+				duration: 1.2,
+				ease: 'power3.out',
+				scrollTrigger: {
+					trigger: el,
+					start: 'top 85%'
+				}
+			});
+		});
+
+		const testCards = document.querySelectorAll('.testimonial-card-scroll');
+		gsap.from(testCards, {
+			opacity: 0,
+			y: 40,
+			duration: 1.4,
+			stagger: 0.15,
+			ease: 'power3.out',
+			scrollTrigger: {
+				trigger: '#testimonials',
+				start: 'top 80%'
+			}
+		});
+
+		// 7. FINAL CTA ANIMATIONS
+		const ctaReveals = document.querySelectorAll('.scroll-reveal-cta');
+		ctaReveals.forEach(el => {
+			gsap.from(el, {
+				opacity: 0,
+				y: 25,
+				duration: 1.2,
+				ease: 'power3.out',
+				scrollTrigger: {
+					trigger: el,
+					start: 'top 85%'
+				}
+			});
+		});
+
+		// Refresh ScrollTrigger coordinates
+		setTimeout(() => {
+			ScrollTrigger.refresh();
+		}, 200);
+	});
+</script>

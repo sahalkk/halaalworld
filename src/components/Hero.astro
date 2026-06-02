@@ -8,8 +8,9 @@ import InteractivePattern from './InteractivePattern.astro';
     <img 
       src="/images/hero.png" 
       alt="Luxury Islamic Lifestyle interior" 
-      class="w-full h-full object-cover scale-105 opacity-60 filter brightness-90 saturate-[0.85]" 
+      class="w-full h-full object-cover scale-105 filter brightness-90 saturate-[0.85] transition-opacity duration-500" 
       id="hero-bg-img"
+      style="opacity: var(--hero-img-opacity, 0.6);"
     />
     <!-- Deep Green-Black Vignette Gradient Overlay -->
     <div class="absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/60 to-transparent"></div>
@@ -65,6 +66,6 @@ import InteractivePattern from './InteractivePattern.astro';
 <style>
   /* Extra support for custom Radial Gradient */
   .bg-radial-gradient\(circle\ at\ center\,\ transparent\ 30\%\,\ rgba\(5\,\ 8\,\ 6\,\ 0\.8\)\ 100\%\) {
-    background: radial-gradient(circle at center, transparent 30%, rgba(5, 8, 6, 0.8) 100%);
+    background: radial-gradient(circle at center, transparent 30%, var(--hero-radial-overlay) 100%);
   }
 </style>
