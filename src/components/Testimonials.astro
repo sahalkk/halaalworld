@@ -1,4 +1,4 @@
----
+<!-- ---
 const letters = [
   {
     quote: "The Medina silk mat transformed my quiet early morning prayer. It is not merely an object of utility; it is a canvas of peace.",
@@ -23,7 +23,6 @@ const letters = [
 
 <section class="py-24 md:py-36 bg-luxury-black relative" id="testimonials">
   <div class="max-w-7xl mx-auto px-6 md:px-12">
-    <!-- Section Header -->
     <div class="mb-16 md:mb-20 flex flex-col items-center text-center gap-4">
       <span class="font-sans text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold scroll-reveal-test">
         Patron Journals
@@ -33,23 +32,18 @@ const letters = [
       </h2>
     </div>
 
-    <!-- 3-Column Glassmorphic Layout -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
       {letters.map((letItem, index) => (
         <div class="glass p-8 md:p-12 relative flex flex-col justify-between group hover:border-gold-500/40 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(198,168,90,0.05)] transition-[transform,border-color,box-shadow] duration-500 testimonial-card-scroll" id={`testimonial-${index}`}>
-          <!-- Subtle top gold accent corner -->
           <div class="absolute top-0 left-0 w-8 h-[1px] bg-gold-500/30 group-hover:bg-gold-500 transition-colors duration-500"></div>
           <div class="absolute top-0 left-0 w-[1px] h-8 bg-gold-500/30 group-hover:bg-gold-500 transition-colors duration-500"></div>
 
-          <!-- Quote Icon -->
           <span class="font-serif text-6xl text-gold-500/10 mb-6 block select-none">“</span>
 
-          <!-- Quote Text -->
           <p class="font-sans text-sm text-gray-300 font-light leading-relaxed tracking-wide italic mb-10">
             {letItem.quote}
           </p>
 
-          <!-- Citation Details -->
           <div class="border-t border-gold-500/10 pt-6 mt-auto">
             <h4 class="font-serif text-base text-white tracking-wide">{letItem.author}</h4>
             <div class="flex justify-between items-baseline mt-1">
@@ -65,4 +59,4 @@ const letters = [
       ))}
     </div>
   </div>
-</section>
+</section> -->
